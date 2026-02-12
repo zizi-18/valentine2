@@ -5,12 +5,16 @@
 <title>Te amo ❤️</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body onclick="reproducirMusica()">
+<body onclick="activarMusica()">
 
 <div class="container">
     <h1>I knew you'd say yes! 😍</h1>
     <p>You just made me the happiest person ❤️</p>
-    <p style="font-size: 12px; margin-top: 20px; opacity: 0.6;">(Toca la pantalla para la sorpresa musical 🎵)</p>
+    
+    <p>Gracias por ser como eres y por estar en mi vida.</p>
+    <p style="font-size: 24px; margin-top: 20px;">¡Te amo muchísimo! ❤️🌹</p>
+
+    <p style="font-size: 12px; margin-top: 30px; opacity: 0.7;">(Si no escuchas la música, toca la pantalla 🎵)</p>
 </div>
 
 <audio id="musica" loop>
@@ -18,17 +22,25 @@
 </audio>
 
 <script>
-    function reproducirMusica() {
-        let audio = document.getElementById("musica");
+    // Esta función intenta reproducir el audio
+    function activarMusica() {
+        var audio = document.getElementById("musica");
         audio.play();
     }
 
-    // Intentar que suene automáticamente al cargar la página
+    // Intentamos que suene nada más cargar la página
     window.onload = function() {
-        let audio = document.getElementById("musica");
-        audio.play().catch(function(error) {
-            console.log("El navegador bloqueó el autoplay, esperando al clic del usuario.");
-        });
+        var audio = document.getElementById("musica");
+        // Intentamos dar play
+        var promise = audio.play();
+
+        if (promise !== undefined) {
+            promise.catch(error => {
+                // Si el navegador bloquea el autoplay, no hacemos nada.
+                // Esperamos a que el usuario toque la pantalla (el onclick del body)
+                console.log("Autoplay bloqueado. Esperando interacción.");
+            });
+        }
     };
 </script>
 
