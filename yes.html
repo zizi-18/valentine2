@@ -5,19 +5,32 @@
 <title>Te amo ❤️</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onclick="reproducirMusica()">
 
 <div class="container">
     <h1>I knew you'd say yes! 😍</h1>
     <p>You just made me the happiest person ❤️</p>
+    <p style="font-size: 12px; margin-top: 20px; opacity: 0.6;">(Toca la pantalla para la sorpresa musical 🎵)</p>
 </div>
 
-
-<audio autoplay loop controls>
+<audio id="musica" loop>
     <source src="labyrinth.mp3" type="audio/mpeg">
 </audio>
 
+<script>
+    function reproducirMusica() {
+        let audio = document.getElementById("musica");
+        audio.play();
+    }
+
+    // Intentar que suene automáticamente al cargar la página
+    window.onload = function() {
+        let audio = document.getElementById("musica");
+        audio.play().catch(function(error) {
+            console.log("El navegador bloqueó el autoplay, esperando al clic del usuario.");
+        });
+    };
+</script>
+
 </body>
 </html>
-
-
