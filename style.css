@@ -97,3 +97,72 @@ img {
     opacity: 0.7;
     color: #888;
 }
+/* =========================================
+   NUEVOS ESTILOS PARA EL FONDO ANIMADO
+   ========================================= */
+
+/* Contenedor que ocupa toda la pantalla detrás de la caja blanca */
+.bg-animado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Para que no se salgan las barras de scroll */
+    z-index: -1; /* IMPORTANTE: Esto lo pone detrás de todo */
+    pointer-events: none; /* Para que no interfiera con los clics */
+}
+
+/* --- Estilos para los corazones flotantes --- */
+.heart {
+    position: absolute;
+    bottom: -50px; /* Empiezan debajo de la pantalla */
+    font-size: 30px;
+    opacity: 0; /* Empiezan invisibles */
+    animation: float linear infinite; /* La animación de flotar */
+}
+
+/* La animación de subir */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg); /* Suben hasta arriba y giran */
+        opacity: 0; /* Se desvanecen al llegar arriba */
+    }
+}
+
+/* Diferentes posiciones y velocidades para que no parezcan robots */
+.h1 { left: 10%; animation-duration: 8s; animation-delay: 0s; font-size: 35px; }
+.h2 { left: 25%; animation-duration: 12s; animation-delay: 2s; font-size: 25px; }
+.h3 { left: 40%; animation-duration: 10s; animation-delay: 4s; font-size: 30px; }
+.h4 { left: 55%; animation-duration: 15s; animation-delay: 1s; font-size: 40px; }
+.h5 { left: 70%; animation-duration: 9s; animation-delay: 3s; font-size: 28px; }
+.h6 { left: 85%; animation-duration: 11s; animation-delay: 5s; font-size: 32px; }
+.h7 { left: 5%;  animation-duration: 14s; animation-delay: 7s; font-size: 38px; }
+
+
+/* --- Estilos para los elementos estáticos (clavados) --- */
+.static-item {
+    position: absolute;
+    font-size: 50px; /* Más grandes */
+    opacity: 0.6; /* Un poco transparentes para que no molesten */
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); /* Sombra suave */
+}
+
+/* Posiciones específicas para besos y flores */
+/* Esquina superior izquierda */
+.k1 { top: 30px; left: 30px; transform: rotate(-20deg); }
+/* Esquina inferior derecha */
+.k2 { bottom: 40px; right: 40px; transform: rotate(15deg); }
+/* Mitad izquierda */
+.k3 { top: 50%; left: 20px; transform: rotate(45deg); font-size: 40px;}
+
+/* Esquina superior derecha */
+.f1 { top: 40px; right: 50px; transform: rotate(10deg); font-size: 60px;}
+/* Esquina inferior izquierda */
+.f2 { bottom: 30px; left: 50px; transform: rotate(-10deg); }
+/* Mitad derecha */
+.f3 { top: 60%; right: 30px; transform: rotate(-30deg); font-size: 45px;}
